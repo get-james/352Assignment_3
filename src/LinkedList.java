@@ -10,7 +10,7 @@ public class LinkedList {
 	public LinkedList(Scanner inputStream) {
 		if(inputStream.next() != null);
 			head = new Node(new Entry(Integer.parseInt(inputStream.next())));
-		while(inputStream.hasNext() && size <=10) {
+		while(inputStream.hasNext() && size <=1000) {
 			add(inputStream.next());
 			size++;	
 		}

@@ -1,6 +1,7 @@
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -97,6 +98,29 @@ public class ElasticERL {
 		}while(startNode != null);
 		return -1;
 	}
-	
-	
+	public boolean remove(String key) {
+		Node n = list.find(Integer.parseInt(key));
+		if(n == null) {
+			return false;
+		}
+		Node firstNode;
+		Node secondNode;
+		firstNode = n.head;
+		secondNode = n.tail;
+		firstNode.tail = secondNode;
+		secondNode.head = firstNode;
+		return true;
+	}
+	public void generate() {
+		Random rnd = new Random();
+		int key = (rnd.nextInt(100000000));
+		if(list.find(key)== null) {
+			list.add(Integer.toString(key));
+		}
+		else {System.out.println("Duplicate key generated. trying again");
+			generate();
+		}
+		
+		
+	}
 }
