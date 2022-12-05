@@ -4,8 +4,14 @@ public class LinkedList {
 	Node head;
 	Node tail;
 	int size = 0;
+	
 	public LinkedList() {
-		
+		head = null;
+		tail = null;
+	}
+	
+	public LinkedList(Node head) {
+		this.head = head;
 	}
 	public LinkedList(Scanner inputStream) {
 		if(inputStream.next() != null);
