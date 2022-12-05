@@ -3,11 +3,15 @@ public class Node {
 	Entry entry;
 	Node head;
 	Node tail;
+	Node secondaryHead;
+	Node secondaryTail;
 	
 	public Node() {
 		entry = null;
 		head = null;
 		tail = null;
+		secondaryHead = null;
+		secondaryTail = null;
 	}
 	public Node(Entry entry) {
 		this.entry = entry;
