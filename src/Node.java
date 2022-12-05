@@ -25,6 +25,9 @@ public class Node {
 	public void setHead(Node newHead) {
 		this.head = newHead;
 	}
+	public void setSecondaryHead(Node secondaryHead) {
+		this.secondaryHead = secondaryHead;
+	}
 	
 
 }

@@ -13,10 +13,10 @@ public class LinkedList {
 	public LinkedList(Node head) {
 		this.head = head;
 	}
-	public LinkedList(Scanner inputStream) {
+	public LinkedList(Scanner inputStream, int size1) {
 		if(inputStream.next() != null);
 			head = new Node(new Entry(Integer.parseInt(inputStream.next())));
-		while(inputStream.hasNext() && size <=1000) {
+		while(inputStream.hasNext() && size <= size1) {
 			add(inputStream.next());
 			size++;	
 		}
@@ -36,6 +36,23 @@ public class LinkedList {
 		head.setHead(newNode);
 		head = newNode;
 		
+	}
+	/**
+	 * for hashmap
+	 * @param node
+	 */
+	public void add(Node node) {
+		node.secondaryHead = null;
+		if(this.head == null) {
+			node.secondaryHead = null;
+			node.secondaryTail= null;
+			this.head = node;
+		}
+		else {
+		node.secondaryTail = this.head;
+		this.head.setSecondaryHead(node);
+		this.head = node;
+		}
 	}
 	/**
 	 * iterates through list until it either finds and returns Node with key or gets to the end and returns null
