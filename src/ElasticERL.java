@@ -24,10 +24,10 @@ public class ElasticERL {
 	 * 
 	 * */	
 	public void SetEinThreshold(int size){
-		if(size <= 1000) {
+		if(size < 1000) {
 			list = new LinkedList(inputStream, size);
 		}
-		if(size > 1000) {
+		if(size >= 1000) {
 			list = new LinkedList(inputStream, size);
 			hashmap = new HashMap(512, .75f);
 			hashmap.build(list);
@@ -73,12 +73,12 @@ public class ElasticERL {
 		}
 		else return list.find(Integer.parseInt(key)).head.entry.key;
 	}
-	public String getValues(String key) {
+	public String getValues(int key) {
 		Node n1;
 		long time = 0;
 		if(size <= 1000) {
 			//time = System.nanoTime();
-			n1 = list.find(Integer.parseInt(key));
+			n1 = list.find((key));
 			//time = System.nanoTime() - time;
 			//System.out.println(time);
 			if(n1 == null)
@@ -87,7 +87,7 @@ public class ElasticERL {
 		}
 		if(size >1000) {
 	//		time = System.nanoTime();
-			n1 = hashmap.find(Integer.parseInt(key));
+			n1 = hashmap.find((key));
 	//		time = System.nanoTime() - time;
 	//		System.out.println(time);
 			if(n1!=null)
@@ -170,15 +170,14 @@ public class ElasticERL {
 		if(list.find(key)== null) {
 			list.add(Integer.toString(key));
 		}
-		else {System.out.println("Duplicate key generated. trying again");
-			generate();
-		}
+		
 		}
 		if(size > 1000) {
 			if(hashmap.find(key) == null) {
 				list.add(Integer.toString(key));
 				hashmap.put(list.head);
 			}
+			
 		}
 		
 		

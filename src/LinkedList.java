@@ -14,11 +14,13 @@ public class LinkedList {
 		this.head = head;
 	}
 	public LinkedList(Scanner inputStream, int size1) {
-		if(inputStream.next() != null);
+		if(inputStream.next() != null);{
 			head = new Node(new Entry(Integer.parseInt(inputStream.next())));
+			size++;
+		}
 		while(inputStream.hasNext() && size <= size1) {
 			add(inputStream.next());
-			size++;	
+			
 		}
 	
 		
@@ -35,6 +37,7 @@ public class LinkedList {
 		Node newNode = new Node(newEntry, head);
 		head.setHead(newNode);
 		head = newNode;
+		this.size++;
 		
 	}
 	/**

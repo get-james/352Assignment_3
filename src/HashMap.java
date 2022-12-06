@@ -3,11 +3,13 @@ import java.util.Scanner;
 public class HashMap {
 	private LinkedList[] buckets;
 	
-	private int mappingCount = 0;
+	public int mappingCount = 0;
 	private int capacity; 
 	private float loadFactor = 0.75f;
 	public HashMap() {
-		
+		 mappingCount = 0;
+		 capacity = 0 ; 
+		 loadFactor = 0.75f;
 	}
     public HashMap(int capacity, float loadFactor) {
         this.capacity = capacity;
@@ -79,8 +81,8 @@ public class HashMap {
 		  return null;
 	   }
 	   private void checkForRehash() {
-	        if (this.mappingCount > capacity * loadFactor) {
-	            System.out.println("Rehashing from "+capacity+ " to "+capacity * 2);
+	        if (this.mappingCount > capacity * loadFactor && capacity != 10000000) {
+	            System.out.println("Rehashing from "+capacity+ " to "+ Math.min(10000000, capacity* 2));
 	            mappingCount = 0;
 	            // keep a reference to the old buckets, cause we need to re-insert those entries into the new map
 	            // after doubling the capacity
@@ -88,7 +90,7 @@ public class HashMap {
 	            int oldCapacity = this.capacity;
 
 	            // Increase our capacity, double it
-	            capacity *= 2;
+	            capacity = Math.min(capacity*2, 10000000);
 	            this.buckets = new LinkedList[capacity];
 
 	            // Initialize our new bucket lists.
